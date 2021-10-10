@@ -1,0 +1,65 @@
+{% load static %}
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!-- Favicons -->
+  <link href="{% static 'img/apple-touch-icon.png'  %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--Custom css-->
+    <link rel='stylesheet' type='text/css' href={% static 'css/style.css' %}>
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <!--BOOTSTRAP
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    -->
+    
+    <title> Track Home </title>
+  </head>
+<body>
+    
+    
+
+<div class="ui container">
+    <h1><em> <strong> Employee Live </strong> </em> </h1>
+
+    <br><br>
+{% if error %}
+  <h1>{{error}} </h1>
+{% else %}
+<table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ emp.Employee_Name }}</td>
+        <td>{{ emp.Employee_id }}</td>
+        <td>{{ lat }}</td>
+        <td>{{ lon }}</td>
+        <td>{{ emp.phone_no }}</td>
+      </tr>
+      
+    </tbody>
+   
+  </table>
+
+  {{map|safe}}
+{% endif %}
+</div>
+
+</body>
+
+</html>

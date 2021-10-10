@@ -1,0 +1,47 @@
+{% extends 'admin.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+        <center>
+        <h1>Organize Employee</h1>
+    </center>
+
+    <hr>
+    <br><br>
+
+    {% if request.POST %}
+      {% if graph %}
+        <img src="data:image/png;base64, {{ graph | safe}}" width="auto" >
+        <br>
+        <br>
+      {% endif %}
+    {% endif %}
+
+    <form action="" method="POST" class="ui form">
+      {% csrf_token %}
+    
+      <select name="base" class="ui search dropdown">
+        <option value="" disabled selected>Choose any one</option>
+        <option value="city">City</option>
+        <option value="district">District</option>
+        <option value="state">State</option>
+        <option value="country">Country</option>
+      </select> <br>
+      
+      <select name="chart" class="ui search dropdown" >
+        <option value="..." disabled selected>Choose Chart Type</option>
+        <option value="pie">Pie Chart</option>
+        <option value="count">Count Plot</option>
+      </select> <br>
+    
+
+      
+        
+      <center><button class="ui primary button" type="submit">Select</button></center>
+                
+
+    </form>
+
+{% endblock %}
+

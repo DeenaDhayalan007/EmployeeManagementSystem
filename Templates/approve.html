@@ -1,0 +1,81 @@
+{% extends 'admin.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+        <center>
+        <h1>Approve Leave</h1>
+    </center>
+    
+
+    <br><br>
+
+    {% for message in messages %}
+
+    <div class="ui info message transition ">
+        <i class="close icon"></i>
+        <div class="header">
+          {{ message }}
+        </div>
+        
+      </div>
+    {% endfor %}
+
+
+
+    <form class="ui form" action="paid_time_off" method="POST">
+        {% csrf_token %}
+        <div class="field">
+            <label for="">Employee</label>
+        <select name="user" class="ui fluid  dropdown">
+            <option value="" disabled selected>Users</option>
+            {% for i in user %}
+            <option value="{{ i.username }}" >{{ i.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label>Time From</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="date" name="Time_From_Date" placeholder="From Date ">
+          </div>
+          <div class="field">
+            <input type="time" name="Time_From_Time" placeholder="From Time">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Time To</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="date" name="Time_To_Date" placeholder="To Date ">
+          </div>
+          <div class="field">
+            <input type="time" name="Time_To_Time" placeholder="To Time">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="">Options...</label>
+        <select name="status" class="ui fluid  dropdown">
+            <option value="" disabled selected>....</option>
+            <option value="Approve" >Approve</option>
+            <option value="Reject" >Reject</option>
+            <option value="Cancel" >Cancel</option>
+            <option value="Pending" >Pending</option>
+        </select>
+      </div>
+ 
+        <button type="submit" class="ui positive button">Submit</button>
+
+
+    </form>
+
+    <script>
+        $('.message .close').on('click', function () {
+            $(this).closest('.message').transition('fade');
+        });      
+    </script>
+
+{% endblock %}

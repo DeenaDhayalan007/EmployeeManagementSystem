@@ -1,0 +1,227 @@
+{% load static %}
+{% url 'employeehome' as employeehome %}
+{% url 'getlatlon' as getlatlon %}
+{% url 'logout' as Logout %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Gp Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+     <!-- Favicons -->
+  <link href="{% static 'img/apple-touch-icon.png'  %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+    <!-- =======================================================
+    * Template Name: Gp - v4.6.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+  <style media="screen">
+    .fb-profile-block {
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
+.cover-container{
+    background: #1E90FF;
+    background: -webkit-radial-gradient(bottom, #73D6F5 12%, #1E90FF);
+    background: radial-gradient(at bottom, #73D6F5 12%, #1E90FF)
+}
+.fb-profile-block-thumb{
+  display: block;
+  height: 315px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+.fb-profile-block-menu {
+  border: 1px solid #d3d6db;
+  border-radius: 0 0 3px 3px;
+}
+.profile-img a{
+    bottom: 15px;
+    box-shadow: none;
+	display: block;
+	left: 15px;
+	padding:1px;
+	position: absolute;
+	height: 160px;
+	width: 160px;
+	background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+	z-index:9;
+}
+.profile-img img {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
+  height:158px;
+  padding: 5px;
+  width:158px;
+}
+.profile-name {
+  bottom: 60px;
+  left: 200px;
+  position: absolute;
+}
+.profile-name h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  max-width: 275px;
+  position: relative;
+  text-transform: uppercase;
+}
+.fb-profile-block-menu{
+  height: 44px;
+  position: relative;
+  width:100%;
+  overflow:hidden;
+ }
+.block-menu {
+  clear: right;
+  padding-left: 205px;
+}
+.block-menu ul{
+	margin:0;
+	padding:0;
+}
+.block-menu ul li{
+	display:inline-block;
+}
+.block-menu ul li a {
+  border-right: 1px solid #e9eaed;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  height: 42px;
+  line-height: 3.0;
+  padding: 0 17px;
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  color:#4b4f56;
+  text-transform:capitalize;
+}
+.block-menu ul li:first-child a{
+  border-left: 1px solid #e9eaed;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fb-profile-block">
+                <div class="fb-profile-block-thumb cover-container"></div>
+                <div class="profile-img">
+                    <a href="#">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" title="">
+                    </a>
+                </div>
+                <div class="profile-name">
+                    <h2> {{ emp.Employee_Name}} </h2>
+                </div>
+
+                <div class="fb-profile-block-menu">
+                    <div class="block-menu">
+
+
+                            <ul >
+                            <li>
+                            <a href={{ employeehome }} class="{% if request.path == employeehome %}active{% endif %} item">
+                                About You
+                              </a></li>
+                              
+                              <li>
+                                <a href={{ getlatlon }} class="{% if request.path == getlatlon %}active{% endif %} item">
+                                    Share Live Location
+                                  </a></li>
+                              <li >
+                                <a href={{ Logout }} class="{% if request.path == Logout %}active{% endif %} item">
+                                    Logout
+                                  </a></li>
+                        </ul>
+                      
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+{% block content %}
+{% endblock content %}
+</div>
+<div class="container">
+{% if request.path == employeehome %}
+<br>
+<br>
+<center>
+   <h3> <strong> DETAILS </strong></h3>
+
+<table class="table table-hover">
+    
+    <tbody>
+      <tr>
+        <th class="table-warning">Employee Name</th>
+        <td class="table-warning">{{ emp.Employee_Name }}</td>
+        
+      </tr>
+      <tr>
+        <th class="table-primary">Employee ID</th>
+        <td class="table-primary">{{ emp.Employee_id }}</td>
+        
+      </tr>
+      <tr>
+        <th class="table-warning">Contact Number</th>
+        <td class="table-warning">{{ emp.phone_no }}</td>
+        
+      </tr>
+      <tr>
+        <th class="table-danger">Blood Group</th>
+        <td class="table-danger">{{ emp.blood_group }}</td>
+        
+      </tr>
+      <tr>
+        <th class="table-info">Bio</th>
+        <td class="table-info">{{ emp.bio }}</td>
+        
+      </tr>
+      <tr>
+        <th class="table-primary">Address</th>
+        <td class="table-primary">{{ emp.Permanent_Address }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  </center>
+{% endif %}
+</div>
+
+</body>

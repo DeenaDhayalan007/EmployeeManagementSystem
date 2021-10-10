@@ -1,0 +1,41 @@
+{% extends 'admin.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+        <center>
+        <h1>Track Employee</h1>
+    </center>
+    
+
+    <br><br>
+
+    <table class="ui inverted green table">
+      <thead>
+        <tr><th>Employee Name</th>
+        <th>Section</th>
+        <th>Track</th>
+        
+      </tr></thead>
+      <tbody>
+        {% for i in employers %}
+        <tr>
+          <td>{{ i.username }}</td>
+          <td>{{ i.first_name }}</td>
+          
+          <td>
+            <form  action="{% url 'track' i.id %}"  >
+              {% csrf_token %}
+              <button type="submit" class="positive ui button"  style="cursor: pointer;"><strong> Track </strong></button>
+             </form>
+          </td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+{% endblock content %}
+
+ 

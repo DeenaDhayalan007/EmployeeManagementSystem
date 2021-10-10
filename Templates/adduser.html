@@ -1,0 +1,142 @@
+{% extends 'admin.html' %}
+{% load static %}
+{% block title %}Add Employee{% endblock title %}
+
+{% block content %}
+
+    <center>
+        <h1>Add Employee Here</h1>
+      </center>
+
+      {% for message in messages %}
+      <div class="ui info message transition  ">
+        <i class="close icon"></i>
+          <div class="header">
+            {{ message }}
+          </div>
+          
+        </div>
+      {% endfor %}
+
+      
+
+    <form action="adduser" method="POST" class="ui form">
+      {% csrf_token %}
+    
+    
+      
+        <h4 class="ui dividing header">Personal Information</h4>
+        <div class="field">
+          <label>Name</label>
+          <div class="two fields">
+            <div class="field">
+              <input type="text" name="first_name" placeholder="First Name">
+            </div>
+            <div class="field">
+              <input type="text" name="last_name" placeholder="Last Name">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Name & EmailID</label>
+          <div class="two fields">
+            <div class="field">
+              <input type="text" name="Employee_name" placeholder="Full Name">
+            </div>
+            <div class="field">
+              <input type="email" name="email" placeholder="Email address">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Permanent Address</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="text" name="Permanent_Address" placeholder="Permanent Address">
+            </div>
+            
+          </div>
+        </div>
+
+        
+
+        <div class="two fields">
+          
+            
+        </div>
+        <h4 class="ui dividing header">More Information</h4>
+        <div class="field">
+          <label>Contact & BloodGroup</label>
+          <div class="two fields">
+            <div class="field">
+              <input type="text" name="phone_no" placeholder="Contact Number">
+            </div>
+            <div class="field">
+              <input type="text" name="blood_group" placeholder="Blood Group">
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="ui massive form">
+          <div class="field">
+            <label>Bio</label>
+            <input type="text" name="bio">
+          </div>
+         </div>
+
+         <div class="field">
+          <label>Current Address</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="text" name="Current_Address" placeholder="Current Address">
+            </div>
+            
+          </div>
+        </div>
+
+         <h4 class="ui dividing header">Set User Accounts</h4>
+         <div class="field">
+          <label>User Name</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="text" name="username" placeholder="User Name">
+            </div>
+            
+          </div>
+          <div class="field">
+            <label>Employee ID</label>
+            <div class="fields">
+              <div class="twelve wide field">
+                <input type="text" name="Employee_id" placeholder="Employee ID">
+              </div>
+              
+            </div>
+
+          <label>Password</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="password" name="password1" placeholder="Password">
+            </div>
+            
+          </div>
+
+          <label>Confirm Password</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="password" name="password2" placeholder="Confirm Password">
+            </div>
+            
+          </div>
+      
+        
+        <center>
+        <button class="ui primary button" type="submit">Add</button>
+        </center>
+  </form>
+  <script>
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });      
+</script>
+{% endblock content %}

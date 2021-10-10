@@ -1,0 +1,67 @@
+{% extends 'admin.html' %}
+{% load static %}
+{% block title %}View Employee{% endblock title %}
+
+{% block content %}
+        
+    <h1 style="text-align : center;">  Employee Section</h1>
+    
+    <hr>
+    {% for message in messages %}
+
+    <div class="ui info message transition ">
+        <i class="close icon"></i>
+        <div class="header">
+          {{ message }}
+        </div>
+        
+      </div>
+    {% endfor %}
+
+    <table class="ui inverted brown table">
+      <thead>
+        <tr><th>Employee Name</th>
+        <th>Section</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr></thead>
+      <tbody>
+        {% for i in employers %}
+        <tr>
+          <td>{{ i.username }}</td>
+          <td>{{ i.first_name }}</td>
+          
+          <td>
+            <form  action="{% url 'editemp' i.id %}"  >
+              {% csrf_token %}
+              <button type="submit" class="positive ui button"  style="cursor: pointer;">Edit</button>
+                  </form>
+          </td>
+          <td>
+            <form  action="{% url 'removeuser' i.id %}"  >
+              {% csrf_token %}
+              <button type="submit" class="positive ui button"  style="cursor: pointer;">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    
+
+    <script>
+      $('.message .close').on('click', function () {
+          $(this).closest('.message').transition('fade');
+      });      
+  </script>
+    
+
+        
+
+
+      
+      
+
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% url 'adminhome' as AdminHome %}
+{% url 'adduser' as AddEmployee %}
+{% url 'paid_time_off' as ApproveLeave %}
+{% url 'viewemp' as ViewEmployee %}
+{% url 'TrackEmp' as TrackEmployee %}
+{% url 'organize_emp' as OrganizeEmployee %}
+{% url 'logout' as Logout %}
+
+<div class="ui inverted menu">
+    <a href={{ AdminHome }} class="{% if request.path == AdminHome %}active{% endif %} item">
+      Admin Home
+    </a>
+    <a href={{ AddEmployee }} class="{% if request.path == AddEmployee %}active{% endif %} item">
+      Add Employee
+    </a>
+    <a  href={{ApproveLeave}} class="{% if request.path == ApproveLeave %}active{% endif %} item">
+      Approve Leave
+    </a>
+    <a  href={{ViewEmployee}} class="{% if request.path == ViewEmployee %}active{% endif %} item">
+      View Employee
+    </a>
+    <a  href={{TrackEmployee}} class="{% if request.path == TrackEmployee %}active{% endif %} item">
+      Track Employee
+    </a>
+    <a  href={{OrganizeEmployee}} class="{% if request.path == OrganizeEmployee %}active{% endif %} item">
+      Organize Employee
+    </a>
+
+    <div class="right menu">
+        <a class="ui item">
+        <a  href={{Logout}} class="{% if request.path == Logout %}active{% endif %} item">
+          Logout
+        </a>
+     </div>
+      
+
+  </div>
